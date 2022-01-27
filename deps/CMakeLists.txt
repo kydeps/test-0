@@ -10,3 +10,14 @@ ExternalProject_Add(gflags
     CMAKE_ARGS
     -D CMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/install/gflags
 )
+
+ExternalProject_Add(glog
+    GIT_REPOSITORY https://github.com/google/glog.git
+    GIT_TAG v0.4.0
+
+    CMAKE_ARGS
+    -D CMAKE_PREFIX_PATH:PATH=${CMAKE_BINARY_DIR}/install/gflags
+    -D CMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/install/glog
+
+    DEPENDS gflags
+)
