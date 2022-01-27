@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.22)
 project(test)
 
-list(APPEND CMAKE_PREFIX_PATH "/tmp/install")
+execute_process(COMMAND ${CMAKE_COMMAND} -S ${CMAKE_SOURCE_DIR}/deps -B ${CMAKE_BINARY_DIR}/deps)
+execute_process(COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR}/deps)
+
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR}/deps/install/gflags)
 
 find_package(gflags)
 
